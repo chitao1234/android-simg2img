@@ -575,7 +575,7 @@ static int write_normal_fill_chunk(struct output_file* out, uint64_t len, uint32
 }
 
 static int write_normal_fd_chunk(struct output_file* out, uint64_t len, int fd, int64_t offset) {
-  int ret;
+  int ret = 0;
   uint64_t rnd_up_len = ALIGN(len, out->block_size);
 
   bool ok = write_fd_chunk_range(fd, offset, len, [&ret, out](char* data, size_t size) -> bool {

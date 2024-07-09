@@ -21,7 +21,7 @@ DEP_CXX  ?= g++
 AR       ?= ar
 RANLIB   ?= ranlib
 STRIP    ?= strip
-CPPFLAGS += -std=gnu++17 -O2 -W -Wall -Werror -Wextra \
+CPPFLAGS += -std=gnu++17 -O2 -Wall -Werror -Wno-error=attributes \
     -D__STDC_FORMAT_MACROS -D__STDC_CONSTANT_MACROS
 
 # libsparse
@@ -34,7 +34,8 @@ LIB_SRCS = \
     sparse_crc32.cpp \
     sparse_err.cpp \
     sparse_read.cpp \
-    android-base/stringprintf.cpp
+    android-base/stringprintf.cpp \
+    android-base/mapped_file.cpp
 LIB_OBJS = $(LIB_SRCS:%.cpp=%.o)
 LIB_INCS = -Iinclude -Iandroid-base/include
 
